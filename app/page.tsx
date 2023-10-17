@@ -94,6 +94,25 @@
 //   );
 // }
 import Home from "@/components/Home";
-export default function HomePage() {
-  return <Home />;
+import Error from "./error";
+
+export const metadata = {
+  title: "HomePage - BookIT",
+};
+
+const getRooms = async () => {
+  const res = await fetch(`${process.env.API_URL}/api/rooms`);
+  return res.json();
+};
+export default async function HomePage() {
+  const data = await getRooms();
+
+  if (data?.message) {
+    // handle error
+    return <Error error={data} />;
+  }
+
+  console.log(data);
+
+  return <Home data={data} />;
 }

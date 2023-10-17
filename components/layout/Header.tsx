@@ -27,14 +27,14 @@ const Header = () => {
             >
               <figure className="avatar avatar-nav">
                 <img
-                  src="/image/default_avatar.jpg"
+                  src="/images/default_avatar.jpg"
                   alt="chuks"
                   className="rounded-circle placeholder-glow"
                   height="50"
                   width="50"
                 />
               </figure>
-              <span className="placeholder-glow ps-1 ">Chuks</span>
+              <span className="placeholder-glow ps-1">Chuks</span>
             </button>
             <div
               className="dropdown-menu w-100"
