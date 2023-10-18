@@ -112,7 +112,5 @@ export default async function HomePage() {
     return <Error error={data} />;
   }
 
-  console.log(data);
-
   return <Home data={data} />;
 }
