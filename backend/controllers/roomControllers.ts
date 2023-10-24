@@ -4,6 +4,11 @@ import ErrorHandler from "../utils/errorHandler";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors";
 import APIFilters from "../utils/apiFilters";
 
+// const crypto = require("crypto");
+
+// const secret = crypto.randomBytes(32).toString("hex");
+// console.log(secret);
+
 // get all rooms => /api/rooms
 export const allRooms = catchAsyncErrors(async (req: NextRequest) => {
   const resPerPage: number = 4;
