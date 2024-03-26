@@ -6,6 +6,7 @@ import { Carousel } from "react-bootstrap";
 interface Props {
   images: IImage[];
 }
+
 const RoomImageSlider = ({ images }: Props) => {
   return (
     <Carousel>

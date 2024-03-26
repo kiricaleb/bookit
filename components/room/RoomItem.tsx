@@ -12,7 +12,7 @@ interface Props {
 
 const RoomItem = ({ room }: Props) => {
   return (
-    <div className="col-sm-12 col-md-6 col-lg-3 d-flex">
+    <div className="col-sm-12 col-md-6 col-lg-3 my-3 d-flex">
       <div className="card p-2 w-100">
         <Image
           className="card-img-top mx-auto"
@@ -27,11 +27,11 @@ const RoomItem = ({ room }: Props) => {
         />
         <div className="card-body d-flex flex-column">
           <h5 className="card-title">
-            <Link href={`/room/${room?._id}`}>{room?.name}</Link>
+            <Link href={`/rooms/${room?._id}`}>{room?.name}</Link>
           </h5>
           <div className="mt-auto">
             <p className="card-text mt-2">
-              <b>&#8358;{room?.pricePerNight}</b> / night
+              <b>${room?.pricePerNight}</b> / night
             </p>
           </div>
           <div>

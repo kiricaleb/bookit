@@ -1,10 +1,10 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import toast from "react-hot-toast";
-import Link from "next/link";
+import { toast } from "react-hot-toast";
 import ButtonLoader from "../layout/ButtonLoader";
 
 const Login = () => {
@@ -13,8 +13,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
-  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const submiHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -24,8 +23,6 @@ const Login = () => {
       password,
     });
 
-    console.log(result);
-
     setLoading(false);
 
     if (result?.error) {
@@ -34,16 +31,15 @@ const Login = () => {
       router.replace("/");
     }
   };
-
   return (
     <div className="row wrapper">
       <div className="col-10 col-lg-5">
-        <form className="shadow rounded bg-body" onSubmit={submitHandler}>
+        <form className="shadow rounded bg-body" onSubmit={submiHandler}>
           <h1 className="mb-3">Login</h1>
           <div className="mb-3">
             <label className="form-label" htmlFor="email_field">
-              {""}
-              Email{""}
+              {" "}
+              Email{" "}
             </label>
             <input
               type="email"
@@ -55,9 +51,9 @@ const Login = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="password_field" className="form-label">
-              {""}
-              Password{""}
+            <label className="form-label" htmlFor="password_field">
+              {" "}
+              Password{" "}
             </label>
             <input
               type="password"
@@ -83,8 +79,8 @@ const Login = () => {
 
           <div className="mt-3 mb-4">
             <a href="/register" className="float-end">
-              {""}
-              New User? Register Here{""}
+              {" "}
+              New User? Register Here{" "}
             </a>
           </div>
         </form>

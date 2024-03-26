@@ -3,12 +3,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GlobalProvider } from "./GlobalProvider";
 import Head from "./head";
 import Script from "next/script";
+import { GlobalProvider } from "./GlobalProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 

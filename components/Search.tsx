@@ -15,10 +15,9 @@ const Search = () => {
 
     const queryString = [
       location && `location=${encodeURIComponent(location)}`,
-      guests && `guests=${encodeURIComponent(guests)}`,
+      guests && `guestCapacity=${encodeURIComponent(guests)}`,
       category && `category=${encodeURIComponent(category)}`,
     ]
-
       .filter(Boolean)
       .join("&");
 
@@ -32,8 +31,8 @@ const Search = () => {
           <h2 className="mb-3">Search Rooms</h2>
           <div className="form-group mt-3">
             <label htmlFor="location_field" className="mb-1">
-              {""}
-              Location{""}
+              {" "}
+              Location{" "}
             </label>
             <input
               type="text"
@@ -47,8 +46,8 @@ const Search = () => {
 
           <div className="form-group mt-3">
             <label htmlFor="guest_field" className="mb-1">
-              {""}
-              No. of Guest{""}
+              {" "}
+              No. of Guests{" "}
             </label>
             <select
               className="form-select"
@@ -66,7 +65,7 @@ const Search = () => {
 
           <div className="form-group mt-3">
             <label htmlFor="room_type_field" className="mb-1">
-              {""}
+              {" "}
               Room Type{" "}
             </label>
             <select
@@ -82,6 +81,7 @@ const Search = () => {
               ))}
             </select>
           </div>
+
           <button type="submit" className="btn form-btn w-100 py-2">
             Search
           </button>

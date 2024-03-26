@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import ButtonLoader from "../layout/ButtonLoader";
 
 const Register = () => {
@@ -26,7 +26,7 @@ const Register = () => {
 
   useEffect(() => {
     if (error && "data" in error) {
-      toast.error(error?.data?.message);
+      toast.error(error?.data?.errMessage);
     }
 
     if (isSuccess) {
@@ -43,6 +43,7 @@ const Register = () => {
       email,
       password,
     };
+
     register(userData);
   };
 
@@ -58,8 +59,8 @@ const Register = () => {
 
           <div className="mb-3">
             <label htmlFor="name_field" className="form-label">
-              {""}
-              Full Name{""}
+              {" "}
+              Full Name{" "}
             </label>
             <input
               type="text"
@@ -72,9 +73,9 @@ const Register = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="email_field" className="form-label">
-              {""}
-              Email{""}
+            <label className="form-label" htmlFor="email_field">
+              {" "}
+              Email{" "}
             </label>
             <input
               type="email"
@@ -87,9 +88,9 @@ const Register = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="password_field" className="form-label">
-              {""}
-              Password{""}
+            <label className="form-label" htmlFor="password_field">
+              {" "}
+              Password{" "}
             </label>
             <input
               type="password"
@@ -102,7 +103,7 @@ const Register = () => {
             />
           </div>
 
-          <button className="btn form-btn w-100 py-2" type="submit">
+          <button type="submit" className="btn form-btn w-100 py-2">
             {isLoading ? <ButtonLoader /> : "Register"}
           </button>
         </form>

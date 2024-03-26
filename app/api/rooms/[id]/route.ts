@@ -13,7 +13,9 @@ interface RequestContext {
 }
 
 const router = createEdgeRouter<NextRequest, RequestContext>();
+
 dbConnect();
+
 router.get(getRoomDetails);
 
 export async function GET(request: NextRequest, ctx: RequestContext) {

@@ -8,7 +8,9 @@ interface RequestContext {
     id: string;
   };
 }
+
 const router = createEdgeRouter<NextRequest, RequestContext>();
+
 dbConnect();
 
 router.put(updateRoom);
