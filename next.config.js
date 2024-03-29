@@ -30,6 +30,7 @@ const nextConfig = {
     NEXTAUTH_URL: "http://localhost:3000",
     NEXTAUTH_SECRET:
       "cbc8124bc527213e9eba36f798e95df31c52316d00e571b47c21aa4c9f43ac19",
+    REVALIDATE_TOKEN: "JK34J50JSDKFLJSDKF034I5DKFJSDK4IJFKSDJFL",
   },
   images: {
     domains: ["res.cloudinary.com"],
