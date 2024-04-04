@@ -4,7 +4,7 @@ const nextConfig = {
     API_URL: "http://localhost:3000",
     DB_LOCAL_URI: "mongodb://127.0.0.1:27017/bookit",
 
-    DB_URL:
+    DB_URI:
       "mongodb+srv://ossycollections:2vyI51yGiTbSGGTi@cluster0.m4opncc.mongodb.net/bookit?retryWrites=true&w=majority",
     DB_COMPASS:
       "mongodb+srv://ossycollections:2vyI51yGiTbSGGTi@cluster0.m4opncc.mongodb.net/ossycollections",
