@@ -36,36 +36,82 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var room_1 = require("../backend/models/room");
 var mongoose_1 = require("mongoose");
-var data_1 = require("./data");
-// require('dotenv').config({ path: 'next.config.js' })
-var seedRooms = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 4, , 5]);
-                return [4 /*yield*/, mongoose_1.default.connect("mongodb+srv://ossycollections:2vyI51yGiTbSGGTi@cluster0.m4opncc.mongodb.net/bookit?retryWrites=true&w=majority")];
-            case 1:
-                _a.sent();
-                return [4 /*yield*/, room_1.default.deleteMany()];
-            case 2:
-                _a.sent();
-                console.log("Rooms are deleted");
-                return [4 /*yield*/, room_1.default.insertMany(data_1.rooms)];
-            case 3:
-                _a.sent();
-                console.log("Rooms are added");
-                process.exit();
-                return [3 /*break*/, 5];
-            case 4:
-                error_1 = _a.sent();
-                console.log(error_1);
-                process.exit();
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
-        }
+var bcryptjs_1 = require("bcryptjs");
+var crypto = require("crypto");
+var userSchema = new mongoose_1.default.Schema({
+    name: {
+        type: String,
+        required: [true, "Please enter your name"],
+    },
+    email: {
+        type: String,
+        required: [true, "Please enter your email"],
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: [true, "Please enter your password"],
+        minlength: [6, "Your password must be longer than 6 characters"],
+        select: false,
+    },
+    avatar: {
+        public_id: String,
+        url: String,
+    },
+    role: {
+        type: String,
+        default: "user",
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+});
+// Encrypting password before saving the user
+userSchema.pre("save", function (next) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    if (!this.isModified("password")) {
+                        next();
+                    }
+                    _a = this;
+                    return [4 /*yield*/, bcryptjs_1.default.hash(this.password, 10)];
+                case 1:
+                    _a.password = _b.sent();
+                    return [2 /*return*/];
+            }
+        });
     });
-}); };
-seedRooms();
+});
+// Compare user password
+userSchema.methods.comparePassword = function (enteredPassword) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, bcryptjs_1.default.compare(enteredPassword, this.password)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+};
+// Generate reset password token
+userSchema.methods.getResetPasswordToken = function () {
+    // Generate the token
+    var resetToken = crypto.randomBytes(20).toString("hex");
+    // Hash the token
+    this.resetPasswordToken = crypto
+        .createHash("sha256")
+        .update(resetToken)
+        .digest("hex");
+    // Set token expire time
+    this.resetPasswordExpire = Date.now() + 30 * 60 * 1000;
+    return resetToken;
+};
+exports.default = mongoose_1.default.models.User ||
+    mongoose_1.default.model("User", userSchema);
