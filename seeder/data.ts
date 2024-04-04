@@ -196,7 +196,7 @@ export const rooms = [
     pricePerNight: 76,
     description:
       "Our largest room with a queen bed and foldable sofa. Comfortably fits 2-3 adults, four adults maximum. Decorated with Irish-themed colors and arts. It has a private bathroom with a shower, equipped with smart TV, mini-fridge, desk, chairs. Enjoy City views at the sitting area by the window. Located on the 3rd floor with no elevator.",
-    address: "3118  Red Hawk Road, Garfield, MN, 56332",
+    address: "3118  Red Hawk Road, Garfield, MN, 56332.",
     guestCapacity: 2,
     numOfBeds: 1,
     isInternet: true,
