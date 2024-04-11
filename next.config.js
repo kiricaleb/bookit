@@ -17,7 +17,7 @@ const nextConfig = {
     CLOUDINARY_API_KEY: "274456218582533",
     CLOUDINARY_API_SECRET: "6AAFL9xp0_WsVT16QG4ykDcdelk",
     SMTP_HOST: "sandbox.smtp.mailtrap.io",
-    SMTP_PORT: 2525,
+    SMTP_PORT: "2525",
     SMTP_USER: "c5dd455ad6eb06",
     SMTP_PASSWORD: "df05db58f5220d",
     SMTP_FROM_EMAIL: "solomon.chukwuka28@gmail.com",
